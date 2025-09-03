@@ -3,6 +3,7 @@ import quappLogo from '/quapp.png'
 import './App.css'
 // import SplitText from './components/SplitText'
 import { useState } from 'react'
+//some changes
 
 function App() {
   const [Battery, setBattery] = useState();
