@@ -8,7 +8,7 @@ import StatusBarBridge from '../src/bridges/StatusBridge.js';
 import GyroscopeBridge from '../src/bridges/GyroscopeBridge.js';
 import LocationBridge from '../src/bridges/LocationBridge.js';
 import PaymentBridge from '../src/bridges/PaymentBridge.js';
-import FileBridge from '../src/bridges/FileBridge.js';
+import FileBridge from '../src/bridges/Filebridge.js';
 
 // Assign to window
 const Quapp = new QuappSDK();
