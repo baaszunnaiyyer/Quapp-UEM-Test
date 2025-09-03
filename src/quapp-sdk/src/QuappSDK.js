@@ -7,7 +7,7 @@ import StatusBarBridge from './bridges/StatusBridge.js';
 import GyroscopeBridge from './bridges/GyroscopeBridge.js';
 import LocationBridge from './bridges/LocationBridge.js';
 import PaymentBridge from './bridges/PaymentBridge.js';
-import FileBridge from './bridges/Filebsridge.js';
+import FileBridge from './bridges/Filebridge.js';
 
 class QuappSDK {
   constructor() {
