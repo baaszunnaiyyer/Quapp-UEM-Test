@@ -1,4 +1,4 @@
-import Quapp, {BatteryBridge, FlashlightBridge} from '../quapp-sdk/dist'
+import Quapp, {BatteryBridge, FlashlightBridge} from './quapp-sdk/dist'
 import quappLogo from '/quapp.png'
 import './App.css'
 import SplitText from './components/SplitText'
