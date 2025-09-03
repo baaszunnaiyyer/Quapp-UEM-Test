@@ -1,7 +1,7 @@
 import Quapp, {BatteryBridge, FlashlightBridge} from './quapp-sdk/dist'
 import quappLogo from '/quapp.png'
 import './App.css'
-import SplitText from './components/SplitText'
+// import SplitText from './components/SplitText'
 import { useState } from 'react'
 
 function App() {
@@ -32,7 +32,7 @@ function App() {
         <div>
             <img src={quappLogo} className="logo" alt="Vite logo" />
         </div>
-        <SplitText text="Quapp!" tag="h1" className="welcome-text" textAlign="center" />
+        {/* <SplitText text="Quapp!" tag="h1" className="welcome-text" textAlign="center" /> */}
         <p>Interact With Native components Using You Web</p>
         <div className="card">
           <p>
