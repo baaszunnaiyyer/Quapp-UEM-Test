@@ -24,7 +24,7 @@ class GyroscopeBridge extends BridgeWrapper {
           });
           this.events.emit('data', data);
         };
-        this.native.setCallback(this.callbackName);
+        // this.native.setCallback(this.callbackName);
       }
     }
 

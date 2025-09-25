@@ -7,25 +7,25 @@ function App() {
   const [battery, setBattery] = useState(null);
 
   useEffect(() => {
-    if (Quapp.isAvailable('Battery')) {
-      const level = BatteryBridge.checkBattery();
-      setBattery(level);
-    } else {
-      console.warn('Battery Bridge is not available');
-    }
+    // if (Quapp.isAvailable('Battery')) {
+    //   const level = BatteryBridge.checkBattery();
+    //   setBattery(level);
+    // } else {
+    //   console.warn('Battery Bridge is not available');
+    // }
 
-    if (!Quapp.isAvailable('Flashlight')) {
-      console.warn('Flashlight Bridge is not available');
-    }
+    // if (!Quapp.isAvailable('Flashlight')) {
+    //   console.warn('Flashlight Bridge is not available');
+    // }
   }, []);
 
-  const toggleFlashlight = () => {
-    if (Quapp.isAvailable('Flashlight')) {
-      FlashlightBridge.toggle();
-    } else {
-      console.warn('Flashlight Bridge is not available');
-    }
-  }
+  // const toggleFlashlight = () => {
+  //   if (Quapp.isAvailable('Flashlight')) {
+  //     FlashlightBridge.toggle();
+  //   } else {
+  //     console.warn('Flashlight Bridge is not available');
+  //   }
+  // }
 
   return (
     <>
@@ -55,7 +55,7 @@ function App() {
             backgroundColor: "#00000000",
             borderColor: "coral"
           }}
-          onClick={toggleFlashlight}
+          onClick={() => {console.log('Flashlight toggle clicked')}}
         >
           Toggle Flashlight
         </button>

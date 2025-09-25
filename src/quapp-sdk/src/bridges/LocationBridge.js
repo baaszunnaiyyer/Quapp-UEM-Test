@@ -27,7 +27,7 @@ class LocationBridge extends BridgeWrapper {
           this.events.emit('data', data);
         };
 
-        this.native.setCallback(callbackName);
+        // this.native.setCallback(callbackName);
       } else {
         console.warn(`[LocationBridge] Native bridge does not support setCallback`);
       }
