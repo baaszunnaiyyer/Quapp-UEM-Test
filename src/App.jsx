@@ -3,6 +3,7 @@ import './App.css'
 import { useEffect, useLayoutEffect, useState } from 'react'
 
 function App() {
+  const [log, setLog] = useState("");
   const [battery, setBattery] = useState(null);
   const [didRun, setDidRun] = useState("");
 
@@ -13,8 +14,9 @@ function App() {
     
     const check = async () => {
       console.log(typeof (window.Quapp));
+      setLog(`Type of window.Quapp: ${typeof (window.Quapp)}`);
 
-      if (window.Quapp.isQuappEnvironment) {
+      if (window.Quapp) {
         setDidRun("Running inside Quapp environment.");
         // Get device information
         const info = await Quapp.getDeviceInfo();
@@ -43,6 +45,11 @@ function App() {
       <div className="card">
         <p>
           {didRun}
+        </p>
+      </div>
+      <div>
+        <p>
+          {log}
         </p>
       </div>
       {battery ? (
