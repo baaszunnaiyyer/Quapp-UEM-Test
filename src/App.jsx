@@ -1,67 +1,41 @@
-import Quapp, { BatteryBridge, FlashlightBridge } from './quapp-sdk/dist'
 import quappLogo from '/quapp.png'
 import './App.css'
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 
 function App() {
-  const [battery, setBattery] = useState(null);
 
   useEffect(() => {
-    if (Quapp.isAvailable('Battery')) {
-      const level = BatteryBridge.checkBattery();
-      setBattery(level);
-    } else {
-      console.warn('Battery Bridge is not available');
+    const check = async () => {
+      if (Quapp.isQuappEnvironment) {
+        // Get device information
+        const info = await Quapp.getDeviceInfo();
+        console.log(`Running on ${info.model}`);
+        
+        // Check battery status
+        const battery = await Quapp.getBattery();
+        console.log(`Battery: ${battery.level}%`);
+      }else {
+        console.log("Not running inside Quapp environment.");
+      }
     }
-
-    if (!Quapp.isAvailable('Flashlight')) {
-      console.warn('Flashlight Bridge is not available');
-    }
-  }, []);
-
-  const toggleFlashlight = () => {
-    if (Quapp.isAvailable('Flashlight')) {
-      FlashlightBridge.toggle();
-    } else {
-      console.warn('Flashlight Bridge is not available');
-    }
-  }
+  check();
+  }, [])
 
   return (
     <>
       <div>
-        <div>
           <img src={quappLogo} className="logo" alt="Vite logo" />
-        </div>
-        <p>Interact With Native components Using Your Web</p>
-        <div className="card">
-          <p>Edit <code>src/App.jsx</code> to see changes in your App</p>
-        </div>
+        
       </div>
-      <div className="info">
-        <h2>Battery Info</h2>
-        {battery !== null ? (
-          <ul>
-            <li>Level: {battery}%</li>
-          </ul>
-        ) : (
-          <p>Battery information is not available.</p>
-        )}
-        <h2>Flashlight Control</h2>
-        <button
-          style={{
-            padding: 16,
-            borderRadius: 8,
-            backgroundColor: "#00000000",
-            borderColor: "coral"
-          }}
-          onClick={toggleFlashlight}
-        >
-          Toggle Flashlight
-        </button>
+      <h1>Quapp</h1>
+      <p>Build your Native apps With a Snap of a Finger</p>
+      <div className="card">
+        <p>
+          Edit <code>src/App.jsx</code> to see Changes in you App
+        </p>
       </div>
     </>
   )
 }
 
-export default App;
+export default App
