@@ -1,10 +1,14 @@
 import quappLogo from '/quapp.png'
 import './App.css'
-import { useEffect } from 'react'
+import { useEffect, useLayoutEffect, useState } from 'react'
 
 function App() {
+  const [battery, setBattery] = useState(null);
+
+  let x = 0;
 
   useEffect(() => {
+
     const check = async () => {
       if (Quapp.isQuappEnvironment) {
         // Get device information
@@ -13,6 +17,7 @@ function App() {
         
         // Check battery status
         const battery = await Quapp.getBattery();
+        setBattery(battery.level);
         console.log(`Battery: ${battery.level}%`);
       }else {
         console.log("Not running inside Quapp environment.");
@@ -34,6 +39,11 @@ function App() {
           Edit <code>src/App.jsx</code> to see Changes in you App
         </p>
       </div>
+      {battery !== null ? (
+        <p>Battery Level: {battery}%</p>
+      ) : (
+        <p>Battery information not available.</p>
+      )}
     </>
   )
 }
