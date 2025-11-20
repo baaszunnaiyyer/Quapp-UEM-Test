@@ -4,13 +4,18 @@ import { useEffect, useLayoutEffect, useState } from 'react'
 
 function App() {
   const [battery, setBattery] = useState(null);
+  const [didRun, setDidRun] = useState("");
 
   let x = 0;
 
   useEffect(() => {
-
+    console.log("asd");
+    
     const check = async () => {
-      if (Quapp.isQuappEnvironment) {
+      console.log(typeof (window.Quapp));
+
+      if (window.Quapp.isQuappEnvironment) {
+        setDidRun("Running inside Quapp environment.");
         // Get device information
         const info = await Quapp.getDeviceInfo();
         console.log(`Running on ${info.model}`);
@@ -21,6 +26,7 @@ function App() {
         console.log(`Battery: ${battery.level}%`);
       }else {
         console.log("Not running inside Quapp environment.");
+        setDidRun("Not running inside Quapp environment.")
       }
     }
   check();
@@ -36,10 +42,10 @@ function App() {
       <p>Build your Native apps With a Snap of a Finger</p>
       <div className="card">
         <p>
-          Edit <code>src/App.jsx</code> to see Changes in you App
+          {didRun}
         </p>
       </div>
-      {battery !== null ? (
+      {battery ? (
         <p>Battery Level: {battery}%</p>
       ) : (
         <p>Battery information not available.</p>
